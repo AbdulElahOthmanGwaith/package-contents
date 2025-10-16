@@ -126,7 +126,7 @@ ai-human-wisdom/
 
 ## 👨‍💻 المطور
 
-**MiniMax Agent** - [GitHub Profile](https://github.com/your-username)
+**AbdulElahOthmanGwaith** - [GitHub Profile](https://github.com/AbdulElahOthmanGwaith)\n\n**للتواصل:** [fcab8090@gmail.com](mailto:fcab8090@gmail.com)
 
 ## 🙏 شكر وتقدير
 
