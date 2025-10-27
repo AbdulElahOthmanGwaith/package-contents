@@ -1,32 +1,4 @@
-// Smooth animations on scroll
-document.addEventListener('DOMContentLoaded', function() {
-    // Add entrance animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                
-                // Add special effects for different elements
-                if (entry.target.classList.contains('diagram-card')) {
-                    entry.target.style.animation = 'slideInScale 0.8s ease-out';
-                }
-            }
-        });
-    }, observerOptions);
-
-    // Observe all cards and diagrams
-    document.querySelectorAll('.insight-card, .wisdom-point, .reflection-card, .diagram-card, .gallery-item').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
+// Interactive functions and effects
 
     // Parallax effect for hero section
     window.addEventListener('scroll', function() {
@@ -59,35 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
 
-    // Add special CSS animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideInScale {
-            from {
-                opacity: 0;
-                transform: translateY(50px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-    `;
-    document.head.appendChild(style);
-});
+    });
 
 // Share wisdom function
 function shareWisdom() {
@@ -208,55 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add click ripple effect
-    cards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
     
-    // Add ripple CSS
-    const rippleCSS = `
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(0);
-            animation: rippleEffect 0.6s linear;
-            pointer-events: none;
-        }
-        
-        @keyframes rippleEffect {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-        
-        .insight-card, .diagram-card, .gallery-item {
-            position: relative;
-            overflow: hidden;
-        }
-    `;
-    
-    const style = document.createElement('style');
-    style.textContent = rippleCSS;
-    document.head.appendChild(style);
     
     // Gallery lightbox effect
     const galleryImages = document.querySelectorAll('.gallery-item:not(.quote-item) img');
@@ -389,42 +285,4 @@ document.addEventListener('DOMContentLoaded', function() {
     const style = document.createElement('style');
     style.textContent = cursorCSS;
     document.head.appendChild(style);
-    
-    // Add interactive image zoom for diagrams
-    const diagramImages = document.querySelectorAll('.diagram-card img');
-    diagramImages.forEach(img => {
-        img.addEventListener('click', function() {
-            // Create modal for image zoom
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.9);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 10000;
-                cursor: pointer;
-            `;
-            
-            const zoomedImg = document.createElement('img');
-            zoomedImg.src = this.src;
-            zoomedImg.style.cssText = `
-                max-width: 90%;
-                max-height: 90%;
-                border-radius: 10px;
-                box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            `;
-            
-            modal.appendChild(zoomedImg);
-            document.body.appendChild(modal);
-            
-            modal.addEventListener('click', function() {
-                document.body.removeChild(modal);
-            });
-        });
-    });
 });
