@@ -1,0 +1,21 @@
+{
+  "name": "الذكاء الاصطناعي والعقل البشري",
+  "short_name": "AI & Human Mind",
+  "description": "موقع يستعرض العلاقة بين الذكاء الاصطناعي والعقل البشري من منظور فلسفي وتقني",
+  "start_url": "/package-contents/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "imgs/ai_brain_neural_network_technology.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "philosophy", "technology"],
+  "lang": "ar",
+  "dir": "rtl"
+}

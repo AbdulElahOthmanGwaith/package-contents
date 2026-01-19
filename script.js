@@ -304,3 +304,36 @@ window.addEventListener('scroll', () => {
     const scrolled = (winScroll / height) * 100;
     scrollProgress.style.width = scrolled + "%";
 });
+
+// --- 8. Back to Top Button ---
+const backToTopBtn = document.getElementById('backToTop');
+
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// --- 9. Lazy Loading for Images ---
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.src = img.dataset.src || img.src;
+    });
+} else {
+    // Fallback for browsers that don't support lazy loading
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+}

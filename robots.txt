@@ -1,0 +1,10 @@
+# robots.txt for AI & Human Mind Website
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://abdulelahothmangwaith.github.io/package-contents/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
