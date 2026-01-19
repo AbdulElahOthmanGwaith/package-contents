@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الذكاء الاصطناعي والعقل البشري | حكمة عصرية</title>
+    <title>الذكاء الاصطناعي والعقل البشري | حكمة عصرية وتأملات تقنية</title>
+    <meta name="description" content="موقع يستعرض العلاقة بين الذكاء الاصطناعي والعقل البشري، مع التركيز على الإبداع والحكمة الإنسانية.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <span class="icon sun">☀️</span>
+                <span class="icon moon">🌙</span>
+            </div>
+        </label>
+    </div>
     <header class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -160,6 +170,26 @@
             </div>
         </section>
 
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">أسئلة شائعة حول الذكاء الاصطناعي</h2>
+                <div class="faq-grid">
+                    <div class="faq-item" data-aos="fade-up">
+                        <h3>هل سيحل الذكاء الاصطناعي محل الإنسان؟</h3>
+                        <p>الذكاء الاصطناعي يحل محل المهام وليس البشر. هو أداة تعزز قدراتنا وتسمح لنا بالتركيز على الإبداع والابتكار.</p>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                        <h3>ما الذي يميز العقل البشري عن الآلة؟</h3>
+                        <p>الوعي، المشاعر، الحكمة، والقدرة على فهم السياقات المعقدة والروحانية هي سمات بشرية فريدة لا يمكن للآلة محاكاتها.</p>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <h3>كيف يمكنني الاستفادة من الذكاء الاصطناعي؟</h3>
+                        <p>من خلال تعلم كيفية استخدامه كشريك إبداعي، وأتمتة المهام الروتينية، واستغلاله في تحليل البيانات الضخمة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="reflection-section">
             <div class="container">
                 <div class="reflection-card" data-aos="fade-up" data-aos-once="true">
@@ -176,8 +206,8 @@
                         </div>
                     </div>
                     <div class="cta-buttons">
-                        <button class="btn-primary" onclick="shareWisdom()">شارك هذه الحكمة</button>
-                        <button class="btn-secondary" onclick="showMore()">اقرأ المزيد</button>
+                        <button class="btn-primary" onclick="shareWisdom()" aria-label="مشاركة الحكمة">شارك هذه الحكمة</button>
+                        <button class="btn-secondary" onclick="showMore()" aria-label="قراءة المزيد من التأملات">اقرأ المزيد</button>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,21 @@
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color: #ff6b6b;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --footer-bg: #1a252f;
+    --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+    --text-color: #f0f0f0;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --footer-bg: #0a0a0a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,10 +25,74 @@
 body {
     font-family: 'Cairo', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
     min-height: 100vh;
 }
+
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    z-index: 1;
+}
+
+.slider .sun { left: 8px; }
+.slider .moon { right: 8px; }
 
 .container {
     max-width: 1200px;
@@ -133,10 +215,10 @@ section {
 }
 
 .insight-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed);
     text-align: center;
     overflow: hidden;
     position: relative;
@@ -380,11 +462,11 @@ section {
 }
 
 .diagram-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed);
     text-align: center;
 }
 
@@ -392,7 +474,7 @@ section {
     grid-column: 1 / -1;
 }
 
-.d.wisdom-point:hover {
+.wisdom-point:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     background: rgba(255,255,255,0.2);
@@ -620,19 +702,50 @@ footer p {
     }
 }
 
-[data-aos="fade-up"] {
+/* AOS Custom Animations (if library fails) */
+.aos-animate [data-aos="fade-up"] {
     animation: fadeInUp 0.8s ease-out;
-}
-
-[data-aos-delay="200"] {
-    animation-delay: 0.2s;
-}
-
-[data-aos-delay="400"] {
-    animation-delay: 0.4s;
 }
 
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
+}
+/* FAQ Section Styles */
+.faq-section {
+    background: var(--bg-color);
+    padding: 80px 0;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.faq-item {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, background-color var(--transition-speed);
+    border-right: 5px solid var(--primary-color);
+}
+
+.faq-item:hover {
+    transform: translateY(-5px);
+}
+
+.faq-item h3 {
+    font-family: 'Amiri', serif;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.faq-item p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
 }
