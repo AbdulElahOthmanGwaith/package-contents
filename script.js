@@ -337,3 +337,45 @@ if ('loading' in HTMLImageElement.prototype) {
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
     document.body.appendChild(script);
 }
+
+/* --- Wisdom Generator Logic --- */
+const wisdoms = [
+    "الذكاء الاصطناعي أداة لتعزيز الإبداع البشري، وليس لاستبداله.",
+    "في عصر الآلة، تبقى الحكمة والتعاطف هما العملة الأغلى للإنسان.",
+    "الخوارزميات تعالج البيانات، لكن العقول البشرية تصنع المعنى.",
+    "اجعل التكنولوجيا جسراً نحو المستقبل، ولا تجعلها جداراً يعزلك عن إنسانيتك.",
+    "سر الإبداع يكمن في القدرة على طرح الأسئلة الصحيحة، لا في مجرد إعطاء الإجابات.",
+    "الآلة تتبع الأنماط، بينما الإنسان يكسرها ليخلق شيئاً جديداً.",
+    "التوازن الحكيم هو أن نستخدم ذكاء الآلة لنرتقي بوعي الإنسان.",
+    "المستقبل ليس صراعاً بين الإنسان والآلة، بل هو تعاون بينهما لبناء عالم أفضل.",
+    "الذكاء الاصطناعي قد يحاكي المنطق، لكنه لن يحاكي أبداً الروح البشرية.",
+    "تعلم كيف تعمل الآلة، لكن لا تنسَ أبداً كيف تشعر كإنسان."
+];
+
+function generateWisdom() {
+    const wisdomText = document.getElementById('wisdom-text');
+    const btn = document.getElementById('generate-wisdom-btn');
+    
+    if (!wisdomText || !btn) return;
+
+    // Add loading state
+    btn.disabled = true;
+    wisdomText.style.opacity = '0';
+    
+    setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * wisdoms.length);
+        wisdomText.innerText = wisdoms[randomIndex];
+        wisdomText.classList.remove('wisdom-fade-in');
+        void wisdomText.offsetWidth; // Trigger reflow
+        wisdomText.classList.add('wisdom-fade-in');
+        wisdomText.style.opacity = '1';
+        btn.disabled = false;
+    }, 300);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const wisdomBtn = document.getElementById('generate-wisdom-btn');
+    if (wisdomBtn) {
+        wisdomBtn.addEventListener('click', generateWisdom);
+    }
+});
