@@ -33,7 +33,7 @@ jobs:
           destination: ./_site
 
       - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
 
   # مهمة النشر
   deploy:
